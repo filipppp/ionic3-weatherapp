@@ -1,5 +1,6 @@
-<ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
+<ion-tabs tabsHighlight="true">
+  <ion-tab (ionSelect)="transition($event)" tabIcon="home" tabTitle="Home" [root]="homeroot"></ion-tab>
+  <ion-tab (ionSelect)="transition($event)" tabIcon="sunny" tabTitle="Weather" [root]="weatherroot"></ion-tab>
+  <ion-tab (ionSelect)="transition($event)" tabIcon="cog" tabTitle="Settings" [root]="settingsroot"></ion-tab>
+  <ion-tab (ionSelect)="transition($event)" tabIcon="information-circle" tabTitle="About" [root]="aboutroot"></ion-tab>
 </ion-tabs>

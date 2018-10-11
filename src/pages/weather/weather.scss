@@ -1,0 +1,32 @@
+.main-info{
+  img{
+    width: 100px !important;
+    height: 100px;
+  }
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bold !important;
+}
+
+h1{
+  text-align: left;
+  font-weight: 400 !important;
+}
+
+.subinfo{
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  img{
+    display: inline-block;
+    width: 50px !important;
+    height: 50px;
+  }
+  h1{
+    text-align: center;
+  }
+
+}

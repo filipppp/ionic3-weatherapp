@@ -51,7 +51,7 @@ export class TabsPage {
       return;
     }
 
-    this.nativePageTransitions.fade(options);
+    this.nativePageTransitions.slide(options);
   }
 
 }

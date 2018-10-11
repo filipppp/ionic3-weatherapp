@@ -3,6 +3,8 @@ import {NavController, NavParams } from 'ionic-angular';
 import {WeatherProvider} from "../../providers/weather/weather";
 import {SystemProvider} from "../../providers/system/system";
 import {NativePageTransitions, NativeTransitionOptions} from "@ionic-native/native-page-transitions";
+import Chart from 'chart.js';
+import 'chartjs-plugin-datalabels';
 
 /**
  * Generated class for the WeatherPage page.
@@ -36,10 +38,102 @@ export class WeatherPage {
           this.countryCode = dataSet.sys.country;
           this.city = dataSet.name;
         });
+
+
   }
 
   ionViewDidLoad() {
 
+    let weatherData = [-10,-7,0,-6,-20];
+    let minTemp = Math.min(...weatherData);
+    let maxTemp = Math.max(...weatherData);
+    let diff = Math.abs(maxTemp-minTemp);
+
+    let dateArray = [];
+    const NOW = new Date();
+    for(let x = 0; x <= 4; x++) {
+      dateArray.push(`${NOW.getHours()}:00`);
+      NOW.setHours(NOW.getHours()+3);
+    }
+    // @ts-ignore
+    // @ts-ignore
+    let tempChart = new Chart(document.getElementById("tempChart"),{
+      type: 'line',
+      data: {
+        labels: dateArray,
+        datasets: [{
+          data: weatherData,
+          fill: 'start',
+          backgroundColor: 'rgba(72,138,255,0.25)',
+          borderColor: 'rgba(72,138,255,0.75)',
+          borderWidth: 3,
+          pointRadius: 2,
+          cubicInterpolationMode: 'default'
+        }]
+      },
+      options: {
+        plugins: {
+          datalabels: {
+            anchor: 'end',
+            align: 'top',
+            formatter: Math.round,
+            color: 'rgba(135, 135, 135, 0.5)',
+            font: {
+              weight: 'bold',
+              family: 'Arial'
+            }
+          }
+        },
+        tooltips: {
+          enabled: false
+        },
+        hover: {
+          mode: null
+        },
+        legend: {
+          display: false
+        },
+        maintainAspectRatio: false,
+        scales: {
+          elements: {
+            line: {
+              fill: 'rgba(72,138,255,0.75)'
+            }
+          },
+          yAxes: [{
+            ticks: {
+              display: false,
+              max: maxTemp + diff/2.5,
+              min: minTemp - diff/5
+            },
+            gridLines: {
+              zeroLineColor: 'transparent',
+              zeroLineWidth: 2,
+              drawTicks: false,
+              drawBorder: false,
+              color: 'transparent'
+
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              fontSize: 13,
+              fontFamily: 'Arial',
+              fontColor: 'rgba(135, 135, 135, 0.5)',
+              fontStyle: 'bold',
+              padding: 20
+            },
+            gridLines: {
+              zeroLineColor: 'transparent',
+              zeroLineWidth: 2,
+              drawTicks: false,
+              drawBorder: false,
+              color: 'transparent'
+            }
+          }]
+        }
+      }
+    });
   }
 
   ionViewWillLeave() {

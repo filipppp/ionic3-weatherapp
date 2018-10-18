@@ -15,6 +15,7 @@ import {SettingsPage} from "../pages/settings/settings";
 import {WeatherPage} from "../pages/weather/weather";
 import {NativePageTransitions} from "@ionic-native/native-page-transitions";
 import {HttpClientModule} from "@angular/common/http";
+import {ComponentsModule} from "../components/components.module";
 
 @NgModule({
   declarations: [
@@ -26,9 +27,10 @@ import {HttpClientModule} from "@angular/common/http";
     WeatherPage
   ],
   imports: [
+    ComponentsModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

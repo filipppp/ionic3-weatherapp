@@ -12,7 +12,6 @@ import {Loading, LoadingController} from "ionic-angular";
 export class SystemProvider {
 
   constructor(public http: HttpClient, private loadingCtrl: LoadingController) {
-    console.log('Hello SystemProvider Provider');
   }
 
   showLoading(duration: number = 3000, content: string = "Loading..."): void {

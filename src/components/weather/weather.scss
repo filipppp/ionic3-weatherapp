@@ -1,0 +1,14 @@
+weather {
+  margin: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 5px;
+  ion-card {
+    margin: 0px !important;
+    width: 100% !important;
+    p {
+      text-align: center;
+    }
+  }
+}
